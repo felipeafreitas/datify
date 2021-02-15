@@ -30,9 +30,9 @@ export default class SongInput extends Component {
       );
       // colocando o token no state
       this.setState({ token: tokenResponse.data.access_token });
-    //   console.log(tokenResponse);
+      console.log(tokenResponse);
     } catch (err) {
-    //   console.log(err);
+      console.log(err);
     }
   };
 
@@ -66,7 +66,7 @@ export default class SongInput extends Component {
       // coloca o resultado da busca num array searchResult
 
       this.setState({ searchResult: response.data.tracks.items });
-    //   console.log(response.data.tracks.items);
+      console.log(response.data.tracks.items);
     } catch (err) {
       console.error(err);
     }
@@ -74,6 +74,9 @@ export default class SongInput extends Component {
     // solução do stack overflow:
     // faz um loop pelo array de searchResult, comparando com o valor do input
     // se o valor for o mesmo, seta o state da songId pra música escolhida
+
+    // BUG com duas musicas do mesmo nome, pois checa o VALUE(nome) das duas
+    // tentar com component didUpdate??
 
     for (let i = 0; i < this.state.searchResult.length; i++) {
       if (
@@ -93,7 +96,7 @@ export default class SongInput extends Component {
 
   render() {
     return (
-      <div className="m-4">
+      <div className="m-2">
         <label htmlFor="exampleDataList" className="form-label">
           Música
         </label>
