@@ -4,9 +4,10 @@ import axios from "axios";
 
 export default class SongInput extends Component {
   state = {
-    searchResult: "",
+    searchResult: [],
     trackName: "",
     token: "",
+    selectedSongId: "",
   };
 
   componentDidMount = async () => {
@@ -29,35 +30,61 @@ export default class SongInput extends Component {
     }
   };
 
-  handleChange = (event) => {
+  handleChange = async (event) => {
     const { value } = event.target;
     this.setState({ trackName: value });
   };
 
   handleSearch = async (event) => {
     await this.handleChange(event);
-    if (!this.state.trackName){
-        return;
+    if (!this.state.trackName) {
+      return;
     }
     try {
       const response = await axios.get(
-        `https://api.spotify.com/v1/search?query=${this.state.trackName}&type=track&limit=10`, 
-        {headers : { Authorization: `Bearer ${this.state.token}` }}
+        `https://api.spotify.com/v1/search?query=${this.state.trackName}&type=track&limit=10`,
+        { headers: { Authorization: `Bearer ${this.state.token}` } }
       );
-      console.log(response.data);
+      this.setState({ searchResult: response.data.tracks.items });
+      console.log(response.data.tracks.items);
     } catch (err) {
       console.error(err);
+    }
+    for (let i = 0; i < this.state.searchResult.length; i++) {
+      if (
+        document.getElementById("datalistOptions").options[i].value ===
+        document.getElementById("exampleDataList").value
+      ) {
+        // obtains the data-company attrbute
+        this.setState({
+          selectedSongId: document
+            .getElementById("datalistOptions")
+            .options[i].getAttribute("data-id"),
+        });
+        break;
+      }
     }
   };
 
   render() {
     return (
       <div>
+        <label htmlFor="exampleDataList" className="form-label">
+          Música
+        </label>
         <input
           onChange={this.handleSearch}
-          type="text"
-          placeholder="search"
-        ></input>
+          className="form-control"
+          list="datalistOptions"
+          id="exampleDataList"
+          placeholder="Type to search..."
+        />
+        <datalist id="datalistOptions">
+          {this.state.searchResult.map((item) => (
+            <option data-id={item.id} key={item.id} value={item.name}></option>
+          ))}
+        </datalist>
+        {this.state.selectedSongId}
       </div>
     );
   }
