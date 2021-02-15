@@ -7,10 +7,11 @@ import ResultPage from './ResultPage';
 
 function App() {
 	return (
-		<div>
+		<div className='container'>
 			<BrowserRouter>
 				<Route exact path='/' component={Homepage} />
 				<Route exact path='/match/results' component={ResultPage} />
+        {/* <Route exact path='/match' component={} /> */}
 			</BrowserRouter>
 		</div>
 	);
