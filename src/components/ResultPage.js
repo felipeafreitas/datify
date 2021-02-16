@@ -4,6 +4,7 @@ import qs from 'qs';
 import Chart from 'chart.js';
 import Navbar from './Navbar';
 
+
 class ResultPage extends React.Component {
 	state = {
 		track1Name: '',
@@ -12,6 +13,7 @@ class ResultPage extends React.Component {
 		track2Features: '',
 		finalAverage: '',
 		recommendedTracks: '',
+
 	};
 	async componentDidMount() {
 		try {
@@ -67,6 +69,8 @@ class ResultPage extends React.Component {
 				track1Features: { ...tracksFeaturesResponse.data.audio_features[0] },
 				track2Features: { ...tracksFeaturesResponse.data.audio_features[1] },
 			});
+
+			console.log(this.state.track1Features, this.state.track2Features);
 
 			//CÁLCULO DE FEATURES E MÉDIAS PARCIAIS
 			// 1. danceability A value of 0.0 is least danceable and 1.0 is most danceable.
@@ -169,6 +173,7 @@ class ResultPage extends React.Component {
 								this.state.track1Features.speechiness,
 								this.state.track1Features.valence,
 							],
+
 							backgroundColor: [
 								'rgba(255, 99, 132, 0.2)',
 								// 'rgba(54, 162, 235, 0.2)',
@@ -186,6 +191,7 @@ class ResultPage extends React.Component {
 								// 'rgba(255, 159, 64, 1)',
 							],
 							borderWidth: 1,
+
 						},
 						{
 							label: this.state.track2Name.name,

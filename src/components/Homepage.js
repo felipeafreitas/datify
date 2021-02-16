@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route  } from 'react-router-dom';
 import Navbar from './Navbar';
 import SongInput from './SongInput';
+import SingleSong from './SingleSong'
 
 export default class Homepage extends Component {
 	render() {

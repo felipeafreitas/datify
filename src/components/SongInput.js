@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import qs from "qs";
 import axios from "axios";
-
-// TODO refactor e comentarios
+import { Link } from "react-router-dom";
+import SongCard from './SongCard';
 
 export default class SongInput extends Component {
   state = {
     searchResult: [],
-    trackName: "",
+    searchTerm: "",
     token: "",
     selectedSongId: "",
   };
-
-
-  // pega o token -> opção: pode vir como prop do component homepage ou app
 
   componentDidMount = async () => {
     try {
@@ -28,7 +25,7 @@ export default class SongInput extends Component {
           },
         }
       );
-      // colocando o token no state
+
       this.setState({ token: tokenResponse.data.access_token });
       console.log(tokenResponse);
     } catch (err) {
@@ -36,71 +33,35 @@ export default class SongInput extends Component {
     }
   };
 
-  // handle change simples pra ter input controlado
   handleChange = async (event) => {
     const { value } = event.target;
-    this.setState({ trackName: value });
+    this.setState({ searchTerm: value });
   };
 
-  // handleSearch, roda o handleChange dentro dele.
-
   handleSearch = async (event) => {
-    // espera o handleChange terminar de rodar pra não fazer busca com delay
     await this.handleChange(event);
 
-    // condicional necessario para não buggar quando o state tiver um caracter
-    // e, quando apagar, continuar rodando normal 
-
-    if (!this.state.trackName) {
+    if (!this.state.searchTerm) {
+      this.setState({ searchResult: []})
       return;
     }
 
-    // requisição pra API usando o trackName do input e o token como header
-
     try {
       const response = await axios.get(
-        `https://api.spotify.com/v1/search?query=${this.state.trackName}&type=track&limit=3`,
+        `https://api.spotify.com/v1/search?query=${this.state.searchTerm}&type=track&limit=3`,
         { headers: { Authorization: `Bearer ${this.state.token}` } }
       );
 
-      // coloca o resultado da busca num array searchResult
-
-      this.setState({ searchResult: response.data.tracks.items });
+      this.setState({ searchResult: [...response.data.tracks.items] });
       console.log(response.data.tracks.items);
     } catch (err) {
       console.error(err);
-    }
-
-    // solução do stack overflow:
-    // faz um loop pelo array de searchResult, comparando com o valor do input
-    // se o valor for o mesmo, seta o state da songId pra música escolhida
-
-    // BUG com duas musicas do mesmo nome, pois checa o VALUE(nome) das duas
-    // tentar com component didUpdate??
-
-    for (let i = 0; i < this.state.searchResult.length; i++) {
-      if (
-        document.getElementById("datalistOptions").options[i].value ===
-        document.getElementById("exampleDataList").value
-      ) {
-        // obtains the data-id attrbute
-        this.setState({
-          selectedSongId: document
-            .getElementById("datalistOptions")
-            .options[i].getAttribute("data-id"),
-        });
-        break;
-      }
     }
   };
 
   render() {
     return (
-      <div className="m-2">
-        <label htmlFor="exampleDataList" className="form-label">
-          Música
-        </label>
-
+      <div className="d-flex m-2">
         <input
           onChange={this.handleSearch}
           className="form-control"
@@ -110,13 +71,12 @@ export default class SongInput extends Component {
         />
 
         {/* itera pelo searchResult para criar as opções de música da busca */}
-        <datalist id="datalistOptions">
-          {this.state.searchResult.map((item) => (
-            <option data-id={item.id} key={item.id} value={item.name}>
-              {item.artists[0].name} - {item.album.name}
-            </option>
-          ))}
-        </datalist>
+        {this.state.searchResult.map((item) => (
+          <Link to={`/track/${item.id}`}>
+            <SongCard {...item} />
+          </Link>
+        ))}
+
         <h3 className="mt-4"> {this.state.selectedSongId}</h3>
       </div>
     );
