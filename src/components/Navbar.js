@@ -4,7 +4,7 @@ import logo from '../imgs/logo.png';
 
 export default function Navbar() {
 	return (
-		<nav className='navbar navbar-expand-lg navbar-light pt-4'>
+		<nav className='navbar fixed-top navbar-expand-lg navbar-light pt-4'>
 			<div className='container-fluid'>
 				<Link to="/" className='navbar-brand'>
 					<img

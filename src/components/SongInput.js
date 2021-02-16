@@ -6,7 +6,6 @@ export default class SongInput extends Component {
   state = {
     searchResult: [],
     searchTerm: "",
-    token: "",
     selectedSongId: "",
   };
 

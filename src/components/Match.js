@@ -7,10 +7,13 @@ export default class Match extends Component {
   state = {
     firstForm: {},
     secondForm: {},
+    previewSong: {
+      id: "",
+    },
   };
 
   handleClick = (object, formNumber) => {
-    this.setState({ [formNumber]: { ...object } });
+    this.setState({ [formNumber]: { ...object }, previewSong: { ...object } });
     console.log("handle Click from match fired");
   };
 
@@ -39,6 +42,19 @@ export default class Match extends Component {
           <Link to="/match/results" className="btn btn-primary" type="button">
             Resultados
           </Link>
+        </div>
+        <div>
+          {this.state.previewSong.id && (
+            <iframe
+              title="preview"
+              src={`https://open.spotify.com/embed/track/${this.state.previewSong.id}`}
+              width="300"
+              height="80"
+              frameBorder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          )}
         </div>
       </div>
     );
