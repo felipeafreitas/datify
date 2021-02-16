@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import qs from "qs";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import SongCard from "./SongCard";
 
 export default class SongInput extends Component {

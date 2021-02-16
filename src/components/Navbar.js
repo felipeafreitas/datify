@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../imgs/logo.png';
 
 export default function Navbar() {
 	return (
 		<nav className='navbar navbar-expand-lg navbar-light pt-4'>
 			<div className='container-fluid'>
-				<a className='navbar-brand' href='#'>
+				<Link to="/" className='navbar-brand'>
 					<img
 						src={logo}
 						alt=''
@@ -14,7 +15,7 @@ export default function Navbar() {
 						className='d-inline-block align-top'
 					/>
 					Datify
-				</a>
+				</Link>
 				<div>
 					<button
 						className='navbar-toggler'
