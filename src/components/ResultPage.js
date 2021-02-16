@@ -43,6 +43,17 @@ class ResultPage extends React.Component {
 				}
 			);
 
+			const tracksRecommendationResponse = await axios.get(
+				'https://api.spotify.com/v1/recommendations?limit=20&seed_tracks=6ewmrm2AGmipR6fGrNj5N1,5M5cnJbPIEphZvdNKaonoW',
+				{
+					headers: {
+						Authorization: `Bearer ${tokenResponse.data.access_token}`,
+					},
+				}
+			);
+
+			console.log(tracksRecommendationResponse);
+
 			this.setState({
 				track1Name: { ...tracksNames.data.tracks[0] },
 				track2Name: { ...tracksNames.data.tracks[1] },
@@ -192,7 +203,7 @@ class ResultPage extends React.Component {
 						{Math.round(this.state.finalAverage * 100) / 100}%
 					</span>
 				</div>
-                <div></div>
+				<div></div>
 			</div>
 		);
 	}
