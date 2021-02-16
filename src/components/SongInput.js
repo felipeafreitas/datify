@@ -12,27 +12,6 @@ export default class SongInput extends Component {
     selectedSongId: "",
   };
 
-  componentDidMount = async () => {
-    try {
-      const tokenResponse = await axios.post(
-        "https://accounts.spotify.com/api/token",
-        qs.stringify({ grant_type: "client_credentials" }),
-        {
-          headers: {
-            "content-type": "application/x-www-form-urlencoded",
-            Authorization:
-              "Basic ZmE2MWQ3Mzk3YmMwNGVmMzg3NGNmY2Q5YjRiOTY1YjU6M2RjZDE5NzI0OTU3NDNiM2JkYTU1YTJkYWQ0MjMyZDc=",
-          },
-        }
-      );
-
-      this.setState({ token: tokenResponse.data.access_token });
-      console.log(tokenResponse);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   handleChange = async (event) => {
     const { value } = event.target;
     this.setState({ searchTerm: value });
@@ -49,7 +28,7 @@ export default class SongInput extends Component {
     try {
       const response = await axios.get(
         `https://api.spotify.com/v1/search?query=${this.state.searchTerm}&type=track&limit=3`,
-        { headers: { Authorization: `Bearer ${this.state.token}` } }
+        { headers: { Authorization: `Bearer ${this.props.token}` } }
       );
 
       this.setState({ searchResult: [...response.data.tracks.items] });

@@ -5,7 +5,7 @@ import SongInput from './SongInput';
 export default class Match extends Component {
     state = {
         firstForm: {},
-        secondForm: {}
+        secondForm: {},
     }
 
 
@@ -17,8 +17,8 @@ export default class Match extends Component {
     render() {
         return (
             <div>
-                <SongInput handleClick={this.handleClick} formNumber="firstForm" />
-                <SongInput handleClick={this.handleClick} formNumber="secondForm"  />
+                <SongInput token={this.props.token} handleClick={this.handleClick} formNumber="firstForm" />
+                <SongInput token={this.props.token} handleClick={this.handleClick} formNumber="secondForm"  />
                 <div style={{marginTop: '400px'}}>
                 <h1>Primeira música selecionada: {this.state.firstForm.name ? this.state.firstForm.name : ""}</h1>
                 <h2>Segunda música selecionada: {this.state.secondForm.name ? this.state.secondForm.name : "" }</h2>
