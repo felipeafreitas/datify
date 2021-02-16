@@ -3,15 +3,15 @@ import logo from '../imgs/logo.png';
 
 export default function Navbar() {
 	return (
-		<nav class='navbar navbar-expand-lg navbar-light pt-4'>
-			<div class='container-fluid'>
-				<a class='navbar-brand' href='#'>
+		<nav className='navbar navbar-expand-lg navbar-light pt-4'>
+			<div className='container-fluid'>
+				<a className='navbar-brand' href='#'>
 					<img
 						src={logo}
 						alt=''
 						width='30'
 						height='24'
-						class='d-inline-block align-top'
+						className='d-inline-block align-top'
 					/>
 					Datify
 				</a>
