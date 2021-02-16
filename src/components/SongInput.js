@@ -6,7 +6,6 @@ export default class SongInput extends Component {
   state = {
     searchResult: [],
     searchTerm: "",
-    selectedSongId: "",
   };
 
   handleChange = async (event) => {
@@ -51,8 +50,6 @@ export default class SongInput extends Component {
             <SongCard  {...item} />
           </div>
         ))}
-
-        <h3 className="mt-4"> {this.state.selectedSongId}</h3>
       </div>
     );
   }

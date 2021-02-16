@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     token: "",
     firstForm: "",
-    secondForm: ""
+    secondForm: "",
+    previewSong: ""
   }
 
   componentDidMount = async () => {
@@ -38,9 +39,14 @@ class App extends Component {
     }
   }
 
+  handleClick = (object, formNumber) => {
+    this.setState({ [formNumber]: { ...object }, previewSong: { ...object } });
+    console.log("handle Click from match fired from APP component");
+  };
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="container">
         <BrowserRouter>
@@ -50,7 +56,7 @@ class App extends Component {
           </Route>
 
           <Route exact path="/match">
-            <Match token={this.state.token} />
+            <Match firstForm={this.state.firstForm} secondForm={this.state.secondForm} previewSong={this.state.previewSong} handleClick={this.handleClick} token={this.state.token} />
           </Route>
         </BrowserRouter>
       </div>
