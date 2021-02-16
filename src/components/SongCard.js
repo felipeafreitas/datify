@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 
 export default function SongCard(props) {
-    return (
-        <div className="card" style={{ width: "200px", height: "100px" }}>
-              <img
-                className="card-img-top"
-                src={props.album.images[2].url}
-                alt={`song ${props.name}`}
-              />
-              <div className="card-body">
-                <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">
-                  <strong>
-                    {props.artists[0].name} - {props.album.name}
-                  </strong>
-                </p>
-              </div>
-            </div>
-    )
+	return (
+		<li className='list-group-item list-group-item-action'>
+			<div className='d-flex w-100 align-items-center flex-wrap'>
+				<img
+					src={props.album.images[2].url}
+					alt={`song ${props.name}`}
+					className='rounded pr-2'
+				/>
+				<div className='pt-2'>
+					<span><strong>{props.name}</strong></span>
+          <br />
+					<span>
+						{props.artists[0].name} - {props.album.name}
+					</span>
+				</div>
+			</div>
+		</li>
+	);
 }
-

@@ -1,33 +1,29 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import SongInput from './SongInput';
-import './Match.css'
+import './Match.css';
 
 export default class Match extends Component {
+  state={
+    toogleDisplay: false
+  }
 	render() {
 		return (
 			<section
 				className='d-flex justify-content-center align-items-center'
 				style={{ minHeight: '100vh' }}
 			>
-				<div className='card shadow-lg'>
+        <div className='card shadow-lg'>
+        {this.state.toogleDisplay == false ? 
 					<SongInput
 						token={this.props.token}
 						handleClick={this.props.handleClick}
+            onClick={!this.state.toogleDisplay}
 						formNumber='firstForm'
-					/>
-				</div>
-				{/* <SongInput
-					token={this.props.token}
-					handleClick={this.props.handleClick}
-					formNumber='firstForm'
-				/>
-				<SongInput
-					token={this.props.token}
-					handleClick={this.props.handleClick}
-					formNumber='secondForm'
-				/>
-				<div style={{ marginTop: '400px' }}>
+					/>  : <div> </div>}
+
+</div>
+					{/* <div style={{ marginTop: '400px' }}>
 					<h1>
 						Primeira música selecionada:{' '}
 						{this.props.firstForm.name ? this.props.firstForm.name : ''}
@@ -53,6 +49,17 @@ export default class Match extends Component {
 						></iframe>
 					)}
 				</div> */}
+
+				{/* <SongInput
+					token={this.props.token}
+					handleClick={this.props.handleClick}
+					formNumber='firstForm'
+				/>
+				<SongInput
+					token={this.props.token}
+					handleClick={this.props.handleClick}
+					formNumber='secondForm'
+				/> */}
 			</section>
 		);
 	}
