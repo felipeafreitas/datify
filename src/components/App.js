@@ -52,7 +52,7 @@ class App extends Component {
         <BrowserRouter>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/match/results">
-            <ResultPage token={this.state.token} />
+            <ResultPage firstForm={this.state.firstForm} secondForm={this.state.secondForm} token={this.state.token} />
           </Route>
 
           <Route exact path="/match">

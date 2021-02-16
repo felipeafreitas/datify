@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import qs from 'qs';
+
 import Chart from 'chart.js';
 import Navbar from './Navbar';
 import './ResultPage.css'
@@ -13,21 +13,13 @@ class ResultPage extends React.Component {
     track2Features: "",
     finalAverage: "",
     recommendedTracks: "",
-	token: this.props.token
+	  token: this.props.token
   };
   async componentDidMount() {
     try {
-      const tracksNames = await axios.get(
-        "https://api.spotify.com/v1/tracks?ids=6ewmrm2AGmipR6fGrNj5N1,5M5cnJbPIEphZvdNKaonoW",
-        {
-          headers: {
-            Authorization: `Bearer ${this.state.token}`,
-          },
-        }
-      );
 
       const tracksFeaturesResponse = await axios.get(
-        "https://api.spotify.com/v1/audio-features?ids=6ewmrm2AGmipR6fGrNj5N1,5M5cnJbPIEphZvdNKaonoW",
+        `https://api.spotify.com/v1/audio-features?ids=${this.props.firstForm.id},${this.props.secondForm.id}`,
         {
           headers: {
             Authorization: `Bearer ${this.state.token}`,
@@ -49,8 +41,8 @@ class ResultPage extends React.Component {
       });
 
       this.setState({
-        track1Name: { ...tracksNames.data.tracks[0] },
-        track2Name: { ...tracksNames.data.tracks[1] },
+        track1Name: this.props.firstForm.name,
+        track2Name: this.props.secondForm.name,
       });
 
       this.setState({
@@ -151,7 +143,7 @@ class ResultPage extends React.Component {
           ],
           datasets: [
             {
-              label: this.state.track1Name.name,
+              label: this.props.firstForm.name,
               data: [
                 this.state.track1Features.danceability,
                 this.state.track1Features.acousticness,
@@ -181,7 +173,7 @@ class ResultPage extends React.Component {
               borderWidth: 1,
             },
             {
-              label: this.state.track2Name.name,
+              label: this.props.secondForm.name,
               data: [
                 this.state.track2Features.danceability,
                 this.state.track2Features.acousticness,
