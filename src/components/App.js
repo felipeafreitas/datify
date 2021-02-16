@@ -45,7 +45,9 @@ class App extends Component {
       <div className="container">
         <BrowserRouter>
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/match/results" component={ResultPage} />
+          <Route exact path="/match/results">
+            <ResultPage token={this.state.token} />
+          </Route>
 
           <Route exact path="/match">
             <Match token={this.state.token} />
