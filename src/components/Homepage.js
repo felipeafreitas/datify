@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
 
 export default class Homepage extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
 				<section
 					className='d-flex justify-content-center align-items-center'
 					style={{ minHeight: '100vh' }}
@@ -33,14 +31,6 @@ export default class Homepage extends Component {
 					</div>
 				</section>
 
-				<footer className='container column fixed-bottom'>
-					<hr />
-					<div className='row justify-content-between'>
-						<p>©2021</p>
-
-						<p>Send Feedback</p>
-					</div>
-				</footer>
 			</div>
 		);
 	}

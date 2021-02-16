@@ -35,9 +35,9 @@ export default function Navbar() {
 							id='navbarSupportedContent'
 						>
 							<ul className='navbar-nav mr-auto'>
-								<li className='nav-item active'>
+								<li className='nav-item'>
 									<a className='nav-link' href='#'>
-										About <span className='sr-only'>(current)</span>
+										About
 									</a>
 								</li>
 								<li className='nav-item'>

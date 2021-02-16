@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import SongCard from "./SongCard";
+import './SongInput.css'
 
 export default class SongInput extends Component {
   state = {
@@ -39,7 +40,7 @@ export default class SongInput extends Component {
       <div className="d-flex m-2">
         <input
           onChange={this.handleSearch}
-          className="form-control"
+          className="form-control rounded-pill"
           list="datalistOptions"
           id="exampleDataList"
           placeholder="Type to search..."
