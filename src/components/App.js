@@ -1,26 +1,24 @@
-import axios from 'axios';
-import qs from 'qs';
-import { BrowserRouter, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Homepage from './Homepage';
-import ResultPage from './ResultPage';
-import SongInput from './SongInput';
-import SingleSong from './SingleSong';
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Homepage from "./Homepage";
+import ResultPage from "./ResultPage";
+import Match from "./Match";
 
+class App extends Component {
 
-function App() {
-	return (
-		<div className='container'>
-			<BrowserRouter>
-				<Route exact path='/asdsad' component={Homepage} />
-				<Route exact path='/match/results' component={ResultPage} />
-				<SongInput />
-				<Route exact path="/track/:id" component={SingleSong} />
-        {/* <Route exact path='/match' component={} /> */}
-		
-			</BrowserRouter>
-		</div>
-	);
+  render() {
+    return (
+      <div className="container">
+        <BrowserRouter>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/match/results" component={ResultPage} />
+
+          <Route exact path="/match" component={Match} />
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
