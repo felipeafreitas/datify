@@ -1,7 +1,9 @@
-import React from "react";
-import axios from "axios";
-import Chart from "chart.js";
-import Navbar from "./Navbar";
+import React from 'react';
+import axios from 'axios';
+import qs from 'qs';
+import Chart from 'chart.js';
+import Navbar from './Navbar';
+import './ResultPage.css'
 
 class ResultPage extends React.Component {
   state = {
