@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
-
 export default class Homepage extends Component {
 	render() {
 		return (
-			<div style={{ height: '100vh' }}>
-				<header>
-					<Navbar />
-				</header>
+			<div>
+				<Navbar />
 				<section
 					className='d-flex justify-content-center align-items-center'
-					style={{ height: '100%' }}
+					style={{ minHeight: '100vh' }}
 				>
 					<div className='row align-items-center justify-content-center'>
 						<div className='col justify-content-center align-items-center'>
@@ -29,14 +26,21 @@ export default class Homepage extends Component {
 							</p>
 							<br />
 							<Link to='/match' className='btn btn-primary' type='button'>
-								Dê um Match
+								Find Out
 							</Link>
 						</div>
 						<div className='col justify-content-center align-items-center'></div>
 					</div>
 				</section>
 
-				<footer></footer>
+				<footer className='container column fixed-bottom'>
+					<hr />
+					<div className='row justify-content-between'>
+						<p>©2021</p>
+
+						<p>Send Feedback</p>
+					</div>
+				</footer>
 			</div>
 		);
 	}
