@@ -1,11 +1,16 @@
+
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Homepage from "./Homepage";
 import ResultPage from "./ResultPage";
 import Match from "./Match";
+import axios from 'axios';
+import qs from 'qs';
+
 
 class App extends Component {
+
 
   render() {
     return (
@@ -19,6 +24,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 
 export default App;
