@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import qs from 'qs';
 import Chart from 'chart.js';
+import Navbar from './Navbar';
+
 
 class ResultPage extends React.Component {
 	state = {
@@ -10,6 +12,8 @@ class ResultPage extends React.Component {
 		track2Name: '',
 		track2Features: '',
 		finalAverage: '',
+		recommendedTracks: '',
+
 	};
 	async componentDidMount() {
 		try {
@@ -52,14 +56,14 @@ class ResultPage extends React.Component {
 				}
 			);
 
-			console.log(tracksRecommendationResponse);
+			this.setState({
+				recommendedTracks: { ...tracksRecommendationResponse.data.tracks },
+			});
 
 			this.setState({
 				track1Name: { ...tracksNames.data.tracks[0] },
 				track2Name: { ...tracksNames.data.tracks[1] },
 			});
-
-			console.log(this.state.track1Name, this.state.track2Name);
 
 			this.setState({
 				track1Features: { ...tracksFeaturesResponse.data.audio_features[0] },
@@ -169,6 +173,25 @@ class ResultPage extends React.Component {
 								this.state.track1Features.speechiness,
 								this.state.track1Features.valence,
 							],
+
+							backgroundColor: [
+								'rgba(255, 99, 132, 0.2)',
+								// 'rgba(54, 162, 235, 0.2)',
+								// 'rgba(255, 206, 86, 0.2)',
+								// 'rgba(75, 192, 192, 0.2)',
+								// 'rgba(153, 102, 255, 0.2)',
+								// 'rgba(255, 159, 64, 0.2)',
+							],
+							borderColor: [
+								'rgba(255, 99, 132, 1)',
+								// 'rgba(54, 162, 235, 1)',
+								// 'rgba(255, 206, 86, 1)',
+								// 'rgba(75, 192, 192, 1)',
+								// 'rgba(153, 102, 255, 1)',
+								// 'rgba(255, 159, 64, 1)',
+							],
+							borderWidth: 1,
+
 						},
 						{
 							label: this.state.track2Name.name,
@@ -181,6 +204,21 @@ class ResultPage extends React.Component {
 								this.state.track2Features.speechiness,
 								this.state.track2Features.valence,
 							],
+							backgroundColor: [
+								// 'rgba(54, 162, 235, 0.2)',
+								// 'rgba(255, 206, 86, 0.2)',
+								// 'rgba(75, 192, 192, 0.2)',
+								'rgba(153, 102, 255, 0.2)',
+								// 'rgba(255, 159, 64, 0.2)',
+							],
+							borderColor: [
+								// 'rgba(54, 162, 235, 1)',
+								// 'rgba(255, 206, 86, 1)',
+								// 'rgba(75, 192, 192, 1)',
+								'rgba(153, 102, 255, 1)',
+								// 'rgba(255, 159, 64, 1)',
+							],
+							borderWidth: 2,
 						},
 					],
 				},
@@ -193,17 +231,38 @@ class ResultPage extends React.Component {
 
 	render() {
 		return (
-			<div
-				className='w-100 d-flex justify-content-center align-items-center'
-				style={{ height: '100vh' }}
-			>
-				<div className='d-flex flex-column justify-content-center'>
-					<canvas id='myChart' style={{ width: '600px' }}></canvas>
-					<span className='text-center'>
-						{Math.round(this.state.finalAverage * 100) / 100}%
-					</span>
+			<div>
+				<Navbar />
+				<div
+					className='row align-items-center justify-content-center'
+					style={{ height: '100vh' }}
+				>
+					<div className='col justify-content-center align-items-center'>
+						<canvas id='myChart'></canvas>
+						<h2 className='text-center fs-5 fw-bold'>
+							{Math.round(this.state.finalAverage * 100) / 100}%
+						</h2>
+						<div className='progress' style={{ height: '20px' }}>
+							<div
+								className='progress-bar'
+								role='progressbar'
+								style={{ width: this.state.finalAverage + '%' }}
+								aria-valuemin='0'
+								aria-valuemax='100'
+							></div>
+						</div>
+					</div>
+					<div className='col'>
+						<iframe
+							src='https://open.spotify.com/embed/track/5M5cnJbPIEphZvdNKaonoW'
+							width='300'
+							height='80'
+							frameborder='0'
+							allowtransparency='true'
+							allow='encrypted-media'
+						></iframe>
+					</div>
 				</div>
-				<div></div>
 			</div>
 		);
 	}
