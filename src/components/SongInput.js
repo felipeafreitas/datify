@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import qs from "qs";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import SongCard from './SongCard';
+import SongCard from "./SongCard";
 
 export default class SongInput extends Component {
   state = {
@@ -42,7 +42,7 @@ export default class SongInput extends Component {
     await this.handleChange(event);
 
     if (!this.state.searchTerm) {
-      this.setState({ searchResult: []})
+      this.setState({ searchResult: [] });
       return;
     }
 
@@ -70,11 +70,10 @@ export default class SongInput extends Component {
           placeholder="Type to search..."
         />
 
-        {/* itera pelo searchResult para criar as opções de música da busca */}
         {this.state.searchResult.map((item) => (
-          <Link to={`/track/${item.id}`}>
-            <SongCard {...item} />
-          </Link>
+          <div key={item.id} onClick={() => this.props.handleClick(item, this.props.formNumber)}>
+            <SongCard  {...item} />
+          </div>
         ))}
 
         <h3 className="mt-4"> {this.state.selectedSongId}</h3>

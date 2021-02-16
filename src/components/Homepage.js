@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
+
 export default class Homepage extends Component {
 	render() {
 		return (
