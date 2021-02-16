@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import qs from 'qs';
+import Chart from 'chart.js';
 
 class ResultPage extends React.Component {
 	state = {
@@ -8,6 +9,7 @@ class ResultPage extends React.Component {
 		track1Features: '',
 		track2Name: '',
 		track2Features: '',
+		finalAverage: '',
 	};
 	async componentDidMount() {
 		try {
@@ -55,7 +57,7 @@ class ResultPage extends React.Component {
 
 			console.log(this.state.track1Features, this.state.track2Features);
 
-			//Features
+			//CÁLCULO DE FEATURES E MÉDIAS PARCIAIS
 			// 1. danceability A value of 0.0 is least danceable and 1.0 is most danceable.
 			// 2. acousticness from 0.0 to 1.0
 			// 3. instrumentalness The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
@@ -64,29 +66,25 @@ class ResultPage extends React.Component {
 			// 6. energy from 0.0 to 1.0
 			// 7. valence A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track.
 
-			let acousticnessFeatures = [
-				this.state.track1Features.acousticness,
-				this.state.track2Features.acousticness,
-			].sort((a, b) => a - b);
-
-			let averageAcousticness =
-				acousticnessFeatures[0] / acousticnessFeatures[1];
-			console.log(averageAcousticness);
-
 			let danceabilityFeatures = [
 				this.state.track1Features.danceability,
 				this.state.track2Features.danceability,
 			].sort((a, b) => a - b);
 			let averageDanceability =
 				danceabilityFeatures[0] / danceabilityFeatures[1];
-			console.log(averageDanceability);
+
+			let acousticnessFeatures = [
+				this.state.track1Features.acousticness,
+				this.state.track2Features.acousticness,
+			].sort((a, b) => a - b);
+			let averageAcousticness =
+				acousticnessFeatures[0] / acousticnessFeatures[1];
 
 			let energyFeatures = [
 				this.state.track1Features.energy,
 				this.state.track2Features.energy,
 			].sort((a, b) => a - b);
 			let averageEnergy = energyFeatures[0] / energyFeatures[1];
-			console.log(averageEnergy);
 
 			let instrumentalnessFeatures = [
 				this.state.track1Features.instrumentalness,
@@ -94,46 +92,89 @@ class ResultPage extends React.Component {
 			].sort((a, b) => a - b);
 			let averageInstrumentalness =
 				instrumentalnessFeatures[0] / instrumentalnessFeatures[1];
-			console.log(averageInstrumentalness);
 
-			let livenessnessFeatures = [
-				this.state.track1Features.livenessness,
-				this.state.track2Features.livenessness,
+			let livenessFeatures = [
+				this.state.track1Features.liveness,
+				this.state.track2Features.liveness,
 			].sort((a, b) => a - b);
-			let averageLivenessness =
-				livenessnessFeatures[0] / livenessnessFeatures[1];
-			console.log(averageLivenessness);
+			let averageLiveness = livenessFeatures[0] / livenessFeatures[1];
 
 			let speechinessFeatures = [
 				this.state.track1Features.speechiness,
 				this.state.track2Features.speechiness,
 			].sort((a, b) => a - b);
 			let averageSpeechiness = speechinessFeatures[0] / speechinessFeatures[1];
-			console.log(averageSpeechiness);
 
 			let valenceFeatures = [
 				this.state.track1Features.valence,
 				this.state.track2Features.valence,
 			].sort((a, b) => a - b);
 			let averageValence = valenceFeatures[0] / valenceFeatures[1];
-			console.log(averageValence);
 
-			let finalAverage = [
+			//CÁLCULO DE MÉDIA FINAL
+
+			let finalFeaturesFiltered = [
 				averageAcousticness,
 				averageDanceability,
 				averageEnergy,
 				averageInstrumentalness,
-				averageLivenessness,
+				averageLiveness,
 				averageSpeechiness,
 				averageValence,
-			].reduce((el, ac) => {
-				if (Boolean) {
-					console.log(el);
-					return el + ac;
-				}
-			});
+			].filter((item) => item);
 
-			console.log(finalAverage);
+			let finalAverage =
+				(finalFeaturesFiltered.reduce((ac, cv) => {
+					return ac + cv;
+				}) /
+					finalFeaturesFiltered.length) *
+				100;
+
+			this.setState({ finalAverage: finalAverage });
+
+			//RENDERIZANDO GRÁFICO
+			let ctx = document.getElementById('myChart');
+			let myChart = new Chart(ctx, {
+				type: 'radar',
+				data: {
+					labels: [
+						'Danceability',
+						'Acousticness',
+						'Energy',
+						'Instrumentalness',
+						'Liveness',
+						'Speechiness',
+						'Valence',
+					],
+					datasets: [
+						{
+							label: this.state.track1Name.name,
+							data: [
+								this.state.track1Features.danceability,
+								this.state.track1Features.acousticness,
+								this.state.track1Features.energy,
+								this.state.track1Features.instrumentalness,
+								this.state.track1Features.liveness,
+								this.state.track1Features.speechiness,
+								this.state.track1Features.valence,
+							],
+						},
+						{
+							label: this.state.track2Name.name,
+							data: [
+								this.state.track2Features.danceability,
+								this.state.track2Features.acousticness,
+								this.state.track2Features.energy,
+								this.state.track2Features.instrumentalness,
+								this.state.track2Features.liveness,
+								this.state.track2Features.speechiness,
+								this.state.track2Features.valence,
+							],
+						},
+					],
+				},
+				options: {},
+			});
 		} catch (err) {
 			console.log(err);
 		}
@@ -141,11 +182,17 @@ class ResultPage extends React.Component {
 
 	render() {
 		return (
-			<div className='d-flex'>
-				<div>
-					<ul></ul>
+			<div
+				className='w-100 d-flex justify-content-center align-items-center'
+				style={{ height: '100vh' }}
+			>
+				<div className='d-flex flex-column justify-content-center'>
+					<canvas id='myChart' style={{ width: '600px' }}></canvas>
+					<span className='text-center'>
+						{Math.round(this.state.finalAverage * 100) / 100}%
+					</span>
 				</div>
-				<div></div>
+                <div></div>
 			</div>
 		);
 	}
