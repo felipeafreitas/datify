@@ -39,7 +39,7 @@ export default class SongInput extends Component {
 		return (
 			<div
 				className='d-flex flex-column m-5 align-items-center'
-				style={{ heigth: '70vh' }}
+				style={{ width: '90%' }}
 			>
 				<input
 					onChange={this.handleSearch}
