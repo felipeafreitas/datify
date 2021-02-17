@@ -72,7 +72,7 @@ class App extends Component {
 						/>
 					</Route>
 				</BrowserRouter>
-				<footer className='container column fixed-bottom'>
+				<footer className='container column sticky-bottom'>
 					<hr />
 					<div className='row justify-content-between'>
 						<p>©2021</p>
