@@ -26,17 +26,20 @@ export default class Match extends Component {
 							{this.props.firstForm.name ? (
 								<div className='d-flex flex-column justify-content-end'>
 									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
-										{/* <h4 class='card-header'>Selected Track</h4> */}
-										<div className='imgCoverColorizer'>
+										<div>
 											<div
 												alt='cover album'
 												className='imgBox rounded pr-2'
 												style={{
-													backgroundImage: `url(${this.props.firstForm.album.images[1].url})`,
+													background: `linear-gradient(
+															rgba(26, 188, 156, 0.7),
+															rgba(231, 76, 60, 0.7)
+														), url(${this.props.firstForm.album.images[1].url})`,
+													backgroundSize: '150px',
 												}}
 											/>
 										</div>
-										<div className='d-flex flex-column pr-2'>
+										<div className='d-flex flex-column pr-3 pl-3'>
 											<h4>
 												<strong>{this.props.firstForm.name}</strong>
 											</h4>
@@ -81,17 +84,20 @@ export default class Match extends Component {
 							{this.props.secondForm.name ? (
 								<div className='d-flex flex-column justify-content-end'>
 									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
-										{/* <h4 class='card-header'>Selected Track</h4> */}
 										<div className='imgCoverColorizer'>
 											<div
 												alt='cover album'
 												className='imgBox rounded pr-2'
 												style={{
-													backgroundImage: `url(${this.props.secondForm.album.images[1].url})`,
+													background: `linear-gradient(
+															rgba(26, 188, 156, 0.7),
+															rgba(231, 76, 60, 0.7)
+														), url(${this.props.secondForm.album.images[1].url})`,
+													backgroundSize: '150px',
 												}}
 											/>
 										</div>
-										<div className='d-flex flex-column pr-2'>
+										<div className='d-flex flex-column pr-3 pl-3'>
 											<h4>
 												<strong>{this.props.secondForm.name}</strong>
 											</h4>

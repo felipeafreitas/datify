@@ -30,7 +30,7 @@ export default class Homepage extends Component {
 								className='btn btn-success btn-lg'
 								type='button'
 							>
-								Find Out
+								<strong>Find Out</strong>
 							</Link>
 						</div>
 						<div className='col justify-content-center align-items-center'>

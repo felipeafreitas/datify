@@ -15,7 +15,7 @@ export default function Navbar() {
 							height='24'
 							className='d-inline-block align-top'
 						/>
-						Datify
+						<strong>Datify</strong>
 					</a>
 					<div className='sticky-top'>
 						<button
@@ -45,9 +45,13 @@ export default function Navbar() {
 										Contact Us
 									</a>
 								</li>
-								<button className='btn btn-secondary' type='button'>
+								<a
+									href='https://github.com/sincopeiro/datify'
+									className='btn btn-secondary'
+									type='button'
+								>
 									View on Github
-								</button>
+								</a>
 							</ul>
 						</div>
 					</div>
