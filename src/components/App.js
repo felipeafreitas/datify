@@ -42,32 +42,29 @@ class App extends Component {
 		console.log('handle Click from match fired from APP component');
 	};
 
-	render() {
-		console.log(this.state);
-		return (
-			<div className='container'>
-				<Navbar />
-				<BrowserRouter>
-					<Route exact path='/' component={Homepage} />
-					<Route exact path='/match/results'>
-						<ResultPage
-							firstForm={this.state.firstForm}
-							secondForm={this.state.secondForm}
-							token={this.state.token}
-						/>
-					</Route>
+  render() {
+    console.log(this.state);
+    return (
+      <div className="container">
+        <BrowserRouter>
+        <Navbar />
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/match/results">
+            <ResultPage firstForm={this.state.firstForm} secondForm={this.state.secondForm} token={this.state.token} />
+          </Route>
 
-					<Route exact path='/match-1'>
+					<Route exact path='/match-1/'>
 						<Match
 							firstForm={this.state.firstForm}
-							secondForm={this.state.secondForm}
+							isFirstForm={true}
 							previewSong={this.state.previewSong}
 							handleClick={this.handleClick}
 							token={this.state.token}
 						/>
 					</Route>
-					<Route exact path='/match-2'>
+					<Route exact path='/match-2/'>
 						<Match
+              isSecondForm={true}
 							secondForm={this.state.secondForm}
 							previewSong={this.state.previewSong}
 							handleClick={this.handleClick}
