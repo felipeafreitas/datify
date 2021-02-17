@@ -21,7 +21,7 @@ export default class Homepage extends Component {
 								Friedrich Nietzsche. "O outono é sempre igual." - Sandy e Júnior.
 							</p>
 							<br />
-							<Link to='/match-1' className='btn btn-success btn-lg' type='button'>
+							<Link to='/match-1/' className='btn btn-success btn-lg' type='button'>
 								Find Out
 							</Link>
 						</div>
