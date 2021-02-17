@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import heroImg from '../imgs/09dbd61d7f6c31e68e78d7e12e139d1e.jpg';
+import heroImg2 from '../imgs/e09925e8c2c15863bcf3ac4ba71fefd9.jpg';
 
 export default class Homepage extends Component {
 	render() {
@@ -36,7 +37,7 @@ export default class Homepage extends Component {
 							</Link>
 						</div>
 						<div className='col justify-content-center align-items-center'>
-							<img src={heroImg} alt='hero-img' />
+							<img src={heroImg2} alt='hero-img' />
 						</div>
 					</div>
 				</section>

@@ -28,10 +28,12 @@ export default class Match extends Component {
 									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
 										{/* <h4 class='card-header'>Selected Track</h4> */}
 										<div className='imgCoverColorizer'>
-											<img
-												src={this.props.firstForm.album.images[1].url}
+											<div
 												alt='cover album'
-												className='rounded pr-2'
+												className='imgBox rounded pr-2'
+												style={{
+													backgroundImage: `url(${this.props.firstForm.album.images[1].url})`,
+												}}
 											/>
 										</div>
 										<div className='d-flex flex-column pr-2'>
