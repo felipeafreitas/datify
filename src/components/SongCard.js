@@ -6,7 +6,7 @@ export default function SongCard(props) {
 				<img
 					src={props.album.images[2].url}
 					alt={`song ${props.name}`}
-					className='rounded pr-2'
+					className='rounded mr-2'
 				/>
 				<div className='pt-2'>
 					<span>

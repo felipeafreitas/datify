@@ -1,4 +1,29 @@
 .card {
-    min-height: 80vh;
-    min-width: 80vw;
+	min-width: 50vw;
+}
+
+.cardMatch {
+	min-height: 80vh;
+	min-width: 80vw;
+}
+
+.imgBox {
+	height: 150px;
+	width: 150px;
+	background-repeat: no-repeat;
+	background-size: 150px;
+}
+
+.selectedTrackBox {
+	background-color: #0cca4a;
+	color: white;
+}
+
+.selectedTrackBox img {
+	height: 150px;
+}
+
+.imgCoverColorizer {
+	/* background-image: linear-gradient(135deg, #6b0493, #b836e0 40%, #ff4520); */
+	margin-right: 10px;
 }
