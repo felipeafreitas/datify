@@ -4,26 +4,34 @@ import SongInput from './SongInput';
 import './Match.css';
 
 export default class Match extends Component {
-  state={
-    toogleDisplay: false
-  }
+	state = {
+		toogleDisplay: false,
+	};
 	render() {
 		return (
 			<section
 				className='d-flex justify-content-center align-items-center'
 				style={{ minHeight: '100vh' }}
 			>
-        <div className='card shadow-lg'>
-        {this.state.toogleDisplay == false ? 
+				<div className='card shadow-lg'>
 					<SongInput
 						token={this.props.token}
 						handleClick={this.props.handleClick}
-            onClick={!this.state.toogleDisplay}
+						onClick={!this.state.toogleDisplay}
 						formNumber='firstForm'
-					/>  : <div> </div>}
+					/>
+				</div>
+				<div className='card shadow-lg'>
+					<SongInput
+						token={this.props.token}
+						handleClick={this.props.handleClick}
+						onClick={!this.state.toogleDisplay}
+						formNumber='secondForm'
+					/>
+				</div>
 
-</div>
-					{/* <div style={{ marginTop: '400px' }}>
+
+				{/* <div style={{ marginTop: '400px' }}>
 					<h1>
 						Primeira música selecionada:{' '}
 						{this.props.firstForm.name ? this.props.firstForm.name : ''}
@@ -31,11 +39,11 @@ export default class Match extends Component {
 					<h2>
 						Segunda música selecionada:{' '}
 						{this.props.secondForm.name ? this.props.secondForm.name : ''}
-					</h2>
+					</h2> */}
 					<Link to='/match/results' className='btn btn-primary' type='button'>
 						Resultados
 					</Link>
-				</div>
+				{/* </div>
 				<div>
 					{this.props.previewSong.id && (
 						<iframe

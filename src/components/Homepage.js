@@ -11,26 +11,23 @@ export default class Homepage extends Component {
 				>
 					<div className='row align-items-center justify-content-center'>
 						<div className='col justify-content-center align-items-center'>
-							<h1>Encontre o mozão musical</h1>
+							<h1>Music connecting people</h1>
 							<br />
-							<h5>Não quero saber quem molhou, eu só quero passar o rodo</h5>
+							<h5>Having the same taste in music is like a soul connection</h5>
 							<br />
 							<p>
-								Mussum Ipsum, cacilds vidis litro abertis. Pra lá , depois
-								divoltis porris, paradis. Si num tem leite então bota uma pinga
-								aí cumpadi! Posuere libero varius. Nullam a nisl ut ante blandit
-								hendrerit. Aenean sit amet nisi. Tá deprimidis, eu conheço uma
-								cachacis que pode alegrar sua vidis.
+								“Music and rhythm find their way into the secret places of the
+								soul.” ― Plato. “Without music, life would be a mistake.” ―
+								Friedrich Nietzsche. "O outono é sempre igual." - Sandy e Júnior.
 							</p>
 							<br />
-							<Link to='/match' className='btn btn-primary' type='button'>
+							<Link to='/match-1' className='btn btn-success btn-lg' type='button'>
 								Find Out
 							</Link>
 						</div>
 						<div className='col justify-content-center align-items-center'></div>
 					</div>
 				</section>
-
 			</div>
 		);
 	}

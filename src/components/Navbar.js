@@ -45,7 +45,7 @@ export default function Navbar() {
 										Contact Us
 									</a>
 								</li>
-								<button className='btn btn-primary' type='button'>
+								<button className='btn btn-secondary' type='button'>
 									View on Github
 								</button>
 							</ul>

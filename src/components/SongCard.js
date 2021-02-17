@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function SongCard(props) {
 	return (
-		<li className='list-group-item list-group-item-action'>
 			<div className='d-flex w-100 align-items-center flex-wrap'>
 				<img
 					src={props.album.images[2].url}
@@ -10,13 +9,14 @@ export default function SongCard(props) {
 					className='rounded pr-2'
 				/>
 				<div className='pt-2'>
-					<span><strong>{props.name}</strong></span>
-          <br />
+					<span>
+						<strong>{props.name}</strong>
+					</span>
+					<br />
 					<span>
 						{props.artists[0].name} - {props.album.name}
 					</span>
 				</div>
 			</div>
-		</li>
 	);
 }

@@ -37,7 +37,10 @@ export default class SongInput extends Component {
 
 	render() {
 		return (
-			<div className='d-flex flex-column m-2 align-items-center' style={{ heigth: '70vh' }}>
+			<div
+				className='d-flex flex-column m-5 align-items-center'
+				style={{ heigth: '70vh' }}
+			>
 				<input
 					onChange={this.handleSearch}
 					className='form-control rounded-pill'
@@ -45,16 +48,18 @@ export default class SongInput extends Component {
 					id='exampleDataList'
 					placeholder='Type to search...'
 				/>
-        <br />
-				<ul className='list-group' style={{width: '95%'}}>
+				<br />
+				<ul className='list-group' style={{ width: '95%' }}>
 					{this.state.searchResult.map((item) => (
-						<SongCard
-							{...item}
+						<li
+							className='list-group-item list-group-item-action'
 							key={item.id}
 							onClick={() =>
 								this.props.handleClick(item, this.props.formNumber)
 							}
-						/>
+						>
+							<SongCard {...item} />
+						</li>
 					))}
 				</ul>
 			</div>

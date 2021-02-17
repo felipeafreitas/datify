@@ -6,7 +6,7 @@ import ResultPage from './ResultPage';
 import Match from './Match';
 import axios from 'axios';
 import qs from 'qs';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
 
 class App extends Component {
 	state = {
@@ -53,9 +53,17 @@ class App extends Component {
 						<ResultPage token={this.state.token} />
 					</Route>
 
-					<Route exact path='/match'>
+					<Route exact path='/match-1'>
 						<Match
 							firstForm={this.state.firstForm}
+							secondForm={this.state.secondForm}
+							previewSong={this.state.previewSong}
+							handleClick={this.handleClick}
+							token={this.state.token}
+						/>
+					</Route>
+					<Route exact path='/match-2'>
+						<Match
 							secondForm={this.state.secondForm}
 							previewSong={this.state.previewSong}
 							handleClick={this.handleClick}

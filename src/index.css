@@ -1,0 +1,21 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: 0;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #fcfafa;
+}
+
+h1 {
+	font-weight: 900;
+	font-size: 60px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;900&family=Roboto:wght@100&display=swap');
