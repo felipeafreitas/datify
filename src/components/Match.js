@@ -22,24 +22,50 @@ export default class Match extends Component {
 								onClick={!this.state.toogleDisplay}
 								formNumber='firstForm'
 							/>
-							<div class='card'>
-								<div class='card-header'>Featured</div>
-								<div class='card-body'>
-									<h5 class='card-title'>Test</h5>
-									<p class='card-text'>
-										With supporting text below as a natural lead-in to
-										additional content.
-									</p>
-									<a href='#' class='btn btn-primary'>
-										Go somewhere
-									</a>
+
+							{this.props.firstForm.name ? (
+								<div className='d-flex flex-column justify-content-end'>
+									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
+										{/* <h4 class='card-header'>Selected Track</h4> */}
+										<div className='imgCoverColorizer'>
+											<img
+												src={this.props.firstForm.album.images[1].url}
+												alt='cover album'
+												className='rounded pr-2'
+											/>
+										</div>
+										<div className='d-flex flex-column pr-2'>
+											<h4>
+												<strong>{this.props.firstForm.name}</strong>
+											</h4>
+											<h5>{this.props.firstForm.artists[0].name}</h5>
+											{this.props.firstForm.preview_url ? (
+												<audio controls autoplay name='media'>
+													<source
+														src={this.props.firstForm.preview_url}
+														type='audio/mpeg'
+													/>
+												</audio>
+											) : (
+												<h5>No preview Available</h5>
+											)}
+										</div>
+									</div>
+									<Link
+										to='/match-2'
+										className='btn btn-primary m-4'
+										type='button'
+									>
+										Select second song
+									</Link>
 								</div>
-							</div>
-
-
-							<Link to='/match-2' className='btn btn-primary' type='button'>
-								Select second song
-							</Link>
+							) : (
+								''
+							)}
+							{/* <h2>
+								Segunda música selecionada:{' '}
+								{this.props.secondForm.name ? this.props.secondForm.name : ''}
+							</h2> */}
 						</div>
 					</div>
 				)}
@@ -68,28 +94,6 @@ export default class Match extends Component {
 						</div>
 					</div>
 				)}
-
-				{/* </div>
-				<div>
-					{this.props.previewSong.id && (
-						<iframe
-							title='preview'
-							src={`https://open.spotify.com/embed/track/${this.props.previewSong.id}`}
-							width='300'
-							height='80'
-							frameBorder='0'
-							allowtransparency='true'
-							allow='encrypted-media'
-						></iframe>
-					)}
-				</div> */}
-
-				{/* 
-				<SongInput
-					token={this.props.token}
-					handleClick={this.props.handleClick}
-					formNumber='secondForm'
-				/> */}
 			</section>
 		);
 	}
