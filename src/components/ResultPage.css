@@ -1,0 +1,30 @@
+.chart-container {
+    animation: slidein-from-right 500ms;
+}
+@keyframes slidein-from-right {
+    from {
+        margin-left: 100%;
+        width: 300%;
+        opacity: 0;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+        opacity: 1;
+    }
+}
+.slidein-from-left {
+    animation: slidein-from-left 500ms;
+}
+@keyframes slidein-from-left {
+    from {
+        margin-right: 100%;
+        width: 300%;
+        opacity: 0;
+    }
+    to {
+        margin-right: 0%;
+        width: 100%;
+        opacity: 1;
+    }
+}
