@@ -171,8 +171,8 @@ class ResultPage extends React.Component {
               this.state.track1Features.valence,
             ],
 
-            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
+            backgroundColor: ["rgba(164, 184, 196, 0.2)"],
+            borderColor: ["rgba(164, 184, 196, 1)"],
             borderWidth: 1,
           },
           {
@@ -186,8 +186,8 @@ class ResultPage extends React.Component {
               this.state.track2Features.speechiness,
               this.state.track2Features.valence,
             ],
-            backgroundColor: ["rgba(153, 102, 255, 0.2)"],
-            borderColor: ["rgba(153, 102, 255, 1)"],
+            backgroundColor: ["rgba(12, 202, 74, 0.2)"],
+            borderColor: ["rgba(12, 202, 74, 1)"],
             borderWidth: 2,
           },
         ],
@@ -228,11 +228,11 @@ class ResultPage extends React.Component {
           {!this.state.loading && (
             <div
             className="pt-4 chart-container shadow-lg bg-body rounded col justify-content-center align-items-center"
-            style={{ width: "70vw", maxWidth: "800px" }}
+            style={{ width: "80vw", maxWidth: "800px" }}
           >
             <Radar
               width={500}
-              height={200}
+              height={300}
               data={this.state.data}
               options={this.state.options}
             />
