@@ -16,10 +16,7 @@ export default class Homepage extends Component {
 							{/* <h1>Music connecting people</h1> */}
 							<h1>What kind of music are you into?</h1>
 							<br />
-							<h5>
-								Best conversation starter to lead the conversation for a first
-								date
-							</h5>
+							<h5>Best conversation starter to lead for a first date</h5>
 							<br />
 							<p>
 								Have you ever wanted to seduce someone with your music? “Music

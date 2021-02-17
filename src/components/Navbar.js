@@ -17,7 +17,7 @@ export default function Navbar() {
 						/>
 						Datify
 					</a>
-					<div>
+					<div className='sticky-top'>
 						<button
 							className='navbar-toggler'
 							type='button'
