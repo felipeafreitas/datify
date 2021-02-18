@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import SongCard from './SongCard';
 import './SongInput.css';
+import './index.css';
 
 export default class SongInput extends Component {
 	state = {
@@ -52,7 +53,7 @@ export default class SongInput extends Component {
 				<ul className='list-group' style={{ width: '95%' }}>
 					{this.state.searchResult.map((item) => (
 						<li
-							className='list-group-item list-group-item-action'
+							className='fade-in list-group-item list-group-item-action'
 							key={item.id}
 							onClick={() =>
 								this.props.handleClick(item, this.props.formNumber)
