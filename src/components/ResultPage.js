@@ -5,6 +5,7 @@ import { Radar } from "react-chartjs-2";
 import "./ResultPage.css";
 import $ from "jquery";
 
+
 class ResultPage extends React.Component {
   state = {
     track1Name: "",
