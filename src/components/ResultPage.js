@@ -1,13 +1,11 @@
-import React from 'react';
-import axios from 'axios';
-import Chart from 'chart.js';
-import Navbar from './Navbar';
-import { Radar } from 'react-chartjs-2';
-import { Link } from 'react-router-dom';
-import './ResultPage.css';
+import React from "react";
+import axios from "axios";
+import Navbar from "./Navbar";
+import { Radar } from "react-chartjs-2";
+import "./ResultPage.css";
+import $ from "jquery";
 
 class ResultPage extends React.Component {
-
   state = {
     track1Name: "",
     track1Features: "",
@@ -208,6 +206,12 @@ class ResultPage extends React.Component {
       };
 
       this.setState({ data, options, loading: false });
+      $(".progress-bar").animate(
+        {
+          width: `${this.state.finalAverage}%`,
+        },
+        1000
+      );
     } catch (err) {
       console.log(err);
     }
@@ -223,40 +227,47 @@ class ResultPage extends React.Component {
         >
           {this.state.loading && (
             <div class="d-flex justify-content-center">
-              <div class="spinner-grow" style={{width: "15rem", height: "15rem", backgroundColor: "#0CCA4A"}} role="status">
-              </div>
+              <div
+                class="spinner-grow"
+                style={{
+                  width: "15rem",
+                  height: "15rem",
+                  backgroundColor: "#0CCA4A",
+                }}
+                role="status"
+              ></div>
             </div>
           )}
           {!this.state.loading && (
             <div
-            className="pt-4 chart-container shadow-lg bg-body rounded col justify-content-center align-items-center"
-            style={{ width: "80vw", maxWidth: "800px" }}
-          >
-            <Radar
-              width={500}
-              height={300}
-              data={this.state.data}
-              options={this.state.options}
-            />
+              className="pt-4 chart-container shadow-lg bg-body rounded col justify-content-center align-items-center"
+              style={{ width: "80vw", maxWidth: "800px" }}
+            >
+              <Radar
+                width={500}
+                height={300}
+                data={this.state.data}
+                options={this.state.options}
+              />
 
-            <h2 className="text-center m-4 fs-5 fw-bold">
-              {Math.round(this.state.finalAverage * 100) / 100}%
-            </h2>
-            <div className="progress mb-5" style={{ height: "20px" }}>
-              <div
-                className="progress-bar"
-                role="progressbar"
-                style={{
-                  width: this.state.finalAverage + "%",
-                  backgroundColor: "#0CCA4A",
-                }}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
+              <h2 className="text-center m-4 fs-5 fw-bold">
+                {Math.round(this.state.finalAverage * 100) / 100}%
+              </h2>
+              <div className="progress active mb-5" style={{ height: "20px" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{
+                    width: "0%",
+                    backgroundColor: "#0CCA4A",
+                  }}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
             </div>
-          </div>
           )}
-          
+
           {/* <div className="col">
 
             <iframe
@@ -269,10 +280,10 @@ class ResultPage extends React.Component {
               allow="encrypted-media"
             ></iframe>
           </div> */}
-				</div>
-			</div>
-		);
-	}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ResultPage;
