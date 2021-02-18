@@ -222,7 +222,7 @@ class ResultPage extends React.Component {
     return (
       <div>
         <div
-          className="mt-5 mb-5 row align-items-center justify-content-center"
+          className="mb-5 row align-items-center justify-content-center"
           style={{ height: "90vh" }}
         >
           {this.state.loading && (

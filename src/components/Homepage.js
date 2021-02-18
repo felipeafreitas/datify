@@ -7,11 +7,11 @@ export default class Homepage extends Component {
 		return (
 			<div>
 				<section
-					className='d-flex justify-content-center align-items-center'
+					className='container d-flex justify-content-center align-items-center'
 					style={{ minHeight: '100vh' }}
 				>
 					<div className='row align-items-center justify-content-center'>
-						<div className='col justify-content-center align-items-center '>
+						<div className='col-md-6 col-xs-12 justify-content-center align-items-center '>
 							{/* <h1>Music connecting people</h1> */}
 							<h1>What kind of music are you into?</h1>
 							<br />
@@ -32,8 +32,8 @@ export default class Homepage extends Component {
 								<strong>Find Out</strong>
 							</Link>
 						</div>
-						<div className='col justify-content-center align-items-center'>
-							<img src={heroImg2} alt='hero-img' />
+						<div className='col-md-6 col-xs-12 justify-content-center align-items-center'>
+							<img className="img-fluid" src={heroImg2} alt='hero-img' />
 						</div>
 					</div>
 				</section>
