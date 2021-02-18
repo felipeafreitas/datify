@@ -59,31 +59,31 @@
 }
 @keyframes slidein-from-right {
   from {
-    margin-right: 100%;
+    margin-left: 100%;
     width: 100%;
     opacity: 0;
   }
   to {
-    margin-right: 0%;
+    margin-left: 0%;
     width: 100%;
     opacity: 1;
   }
 }
 .slide-in-from-left {
   animation: slidein-from-left 600ms;
-  -webkit-animation: slidein-from-leftt 600ms;
+  -webkit-animation: slidein-from-left 600ms;
   -moz-animation: slidein-from-left 600ms;
   -o-animation: slidein-from-left 600ms;
   -ms-animation: slidein-from-left 600ms;
 }
 @keyframes slidein-from-left {
   from {
-    margin-left: -100%;
+    margin-right: 100%;
     width: 100%;
     opacity: 0;
   }
   to {
-    margin-left: 0%;
+    margin-right: 0%;
     width: 100%;
     opacity: 1;
   }

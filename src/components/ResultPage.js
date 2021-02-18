@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
 import { Radar } from "react-chartjs-2";
 import "./ResultPage.css";
 import "./index.css";
@@ -222,9 +221,8 @@ class ResultPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
         <div
-          className="mt-5 mb-5 row align-items-center justify-content-center"
+          className="mb-5 row align-items-center justify-content-center"
           style={{ height: "90vh" }}
         >
           {this.state.loading && (
