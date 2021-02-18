@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import SongInput from './SongInput';
 import './Match.css';
+import './index.css';
 
 export default class Match extends Component {
 	state = {
@@ -15,7 +16,7 @@ export default class Match extends Component {
 			>
 				{this.props.isFirstForm && (
 					<div>
-						<div className='cardMatch d-flex flex-column align-items-center shadow-lg'>
+						<div className='fade-in cardMatch d-flex flex-column align-items-center shadow-lg'>
 							<SongInput
 								token={this.props.token}
 								handleClick={this.props.handleClick}
@@ -24,7 +25,7 @@ export default class Match extends Component {
 							/>
 
 							{this.props.firstForm.name ? (
-								<div className='d-flex flex-column justify-content-end'>
+								<div className='fade-in d-flex flex-column justify-content-end'>
 									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
 										<div>
 											<div
@@ -73,7 +74,7 @@ export default class Match extends Component {
 
 				{this.props.isSecondForm && (
 					<div>
-						<div className='cardMatch d-flex flex-column align-items-center shadow-lg'>
+						<div className='fade-in cardMatch d-flex flex-column align-items-center shadow-lg'>
 							<SongInput
 								token={this.props.token}
 								handleClick={this.props.handleClick}
@@ -82,7 +83,7 @@ export default class Match extends Component {
 							/>
 
 							{this.props.secondForm.name ? (
-								<div className='d-flex flex-column justify-content-end'>
+								<div className='fade-in d-flex flex-column justify-content-end'>
 									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
 										<div className='imgCoverColorizer'>
 											<div
@@ -114,7 +115,7 @@ export default class Match extends Component {
 											)}
 										</div>
 									</div>
-									<div className='d-flex justify-content-between m-4'>
+									<div className='fade-in d-flex justify-content-between m-4'>
 										<Link
 											to='/match-1'
 											className='btn btn-primary'

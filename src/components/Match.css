@@ -5,6 +5,8 @@
 .cardMatch {
 	min-height: 80vh;
 	min-width: 80vw;
+	background: #a4b8c4;
+	border-radius: 15px;
 }
 
 .imgBox {

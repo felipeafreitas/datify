@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import { Radar } from "react-chartjs-2";
 import "./ResultPage.css";
+import "./index.css";
 import $ from "jquery";
 
 
@@ -241,7 +242,7 @@ class ResultPage extends React.Component {
           )}
           {!this.state.loading && (
             <div
-              className="pt-4 chart-container shadow-lg bg-body rounded col justify-content-center align-items-center"
+              className="fade-in pt-4 chart-container shadow-lg bg-body rounded col justify-content-center align-items-center"
               style={{ width: "80vw", maxWidth: "800px" }}
             >
               <Radar
