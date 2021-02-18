@@ -1,11 +1,13 @@
-import React from "react";
-import axios from "axios";
-import Chart from "chart.js";
-import Navbar from "./Navbar";
-import { Radar } from "react-chartjs-2";
-import "./ResultPage.css";
+import React from 'react';
+import axios from 'axios';
+import Chart from 'chart.js';
+import Navbar from './Navbar';
+import { Radar } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
+import './ResultPage.css';
 
 class ResultPage extends React.Component {
+
   state = {
     track1Name: "",
     track1Features: "",
@@ -256,6 +258,7 @@ class ResultPage extends React.Component {
           )}
           
           {/* <div className="col">
+
             <iframe
               title="preview"
               src="https://open.spotify.com/embed/track/5M5cnJbPIEphZvdNKaonoW"
@@ -266,10 +269,10 @@ class ResultPage extends React.Component {
               allow="encrypted-media"
             ></iframe>
           </div> */}
-        </div>
-      </div>
-    );
-  }
+				</div>
+			</div>
+		);
+	}
 }
 
 export default ResultPage;

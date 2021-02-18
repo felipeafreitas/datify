@@ -26,17 +26,20 @@ export default class Match extends Component {
 							{this.props.firstForm.name ? (
 								<div className='d-flex flex-column justify-content-end'>
 									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
-										{/* <h4 class='card-header'>Selected Track</h4> */}
-										<div className='imgCoverColorizer'>
+										<div>
 											<div
 												alt='cover album'
 												className='imgBox rounded pr-2'
 												style={{
-													backgroundImage: `url(${this.props.firstForm.album.images[1].url})`,
+													background: `linear-gradient(
+															rgba(26, 188, 156, 0.7),
+															rgba(231, 76, 60, 0.7)
+														), url(${this.props.firstForm.album.images[1].url})`,
+													backgroundSize: '150px',
 												}}
 											/>
 										</div>
-										<div className='d-flex flex-column pr-2'>
+										<div className='d-flex flex-column pr-3 pl-3'>
 											<h4>
 												<strong>{this.props.firstForm.name}</strong>
 											</h4>
@@ -64,35 +67,73 @@ export default class Match extends Component {
 							) : (
 								''
 							)}
-							{/* <h2>
-								Segunda música selecionada:{' '}
-								{this.props.secondForm.name ? this.props.secondForm.name : ''}
-							</h2> */}
 						</div>
 					</div>
 				)}
 
 				{this.props.isSecondForm && (
 					<div>
-						<div className='card shadow-lg'>
+						<div className='cardMatch d-flex flex-column align-items-center shadow-lg'>
 							<SongInput
 								token={this.props.token}
 								handleClick={this.props.handleClick}
 								onClick={!this.state.toogleDisplay}
 								formNumber='secondForm'
 							/>
-						</div>
-						<div className='d-flex row-flex'>
-							<Link to='/match-1' className='btn btn-primary' type='button'>
-								return
-							</Link>
-							<Link
-								to='/match/results'
-								className='btn btn-primary'
-								type='button'
-							>
-								Resultados
-							</Link>
+
+							{this.props.secondForm.name ? (
+								<div className='d-flex flex-column justify-content-end'>
+									<div className='d-flex flex-wrap selectedTrackBox align-items-center flex-wrap rounded'>
+										<div className='imgCoverColorizer'>
+											<div
+												alt='cover album'
+												className='imgBox rounded pr-2'
+												style={{
+													background: `linear-gradient(
+															rgba(26, 188, 156, 0.7),
+															rgba(231, 76, 60, 0.7)
+														), url(${this.props.secondForm.album.images[1].url})`,
+													backgroundSize: '150px',
+												}}
+											/>
+										</div>
+										<div className='d-flex flex-column pr-3 pl-3'>
+											<h4>
+												<strong>{this.props.secondForm.name}</strong>
+											</h4>
+											<h5>{this.props.secondForm.artists[0].name}</h5>
+											{this.props.secondForm.preview_url ? (
+												<audio controls autoplay name='media'>
+													<source
+														src={this.props.secondForm.preview_url}
+														type='audio/mpeg'
+													/>
+												</audio>
+											) : (
+												<h5>No preview Available</h5>
+											)}
+										</div>
+									</div>
+									<div className='d-flex justify-content-between m-4'>
+										<Link
+											to='/match-1'
+											className='btn btn-primary'
+											type='button'
+										>
+											Return
+										</Link>
+										<Link
+											to='/match/results'
+											className='btn btn-primary'
+											type='button'
+										>
+											Results
+										</Link>
+									</div>
+								</div>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 				)}
