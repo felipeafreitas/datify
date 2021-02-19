@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import heroImg2 from '../imgs/e09925e8c2c15863bcf3ac4ba71fefd9.jpg';
+import './Homepage.css'
 
 export default class Homepage extends Component {
 	render() {

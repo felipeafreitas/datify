@@ -280,10 +280,10 @@ class ResultPage extends React.Component {
               allow="encrypted-media"
             ></iframe>
           </div> */}
-        </div>
-      </div>
-    );
-  }
+				</div>
+			</div>
+		);
+	}
 }
 
 export default ResultPage;
