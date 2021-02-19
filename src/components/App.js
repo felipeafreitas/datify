@@ -6,7 +6,7 @@ import ResultPage from './ResultPage';
 import Match from './Match';
 import axios from 'axios';
 import qs from 'qs';
-import Navbar from './Navbar';
+import NavbarComponent from './NavbarComponent';
 
 class App extends Component {
 	state = {
@@ -45,9 +45,10 @@ class App extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="container">
+      <div>
         <BrowserRouter>
-        <Navbar />
+        <NavbarComponent/>
+		<div className="container-fluid" >
           <Route exact path="/" component={Homepage} />
           <Route exact path="/match/results">
             <ResultPage firstForm={this.state.firstForm} secondForm={this.state.secondForm} token={this.state.token} />
@@ -71,8 +72,9 @@ class App extends Component {
 							token={this.state.token}
 						/>
 					</Route>
+					</div>
 				</BrowserRouter>
-				<footer className='container column fixed-bottom'>
+				<footer className='column' style={{width: '100vw'}}>
 					<hr />
 					<div className='row justify-content-between'>
 						<p>©2021</p>

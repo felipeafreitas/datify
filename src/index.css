@@ -1,9 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: 0;
-}
-
 body {
 	min-height: 100vh;
 	display: flex;
@@ -19,3 +13,40 @@ h1 {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;900&family=Roboto:wght@100&display=swap');
+
+@media only screen and (max-width: 991px) {
+	h1 {
+	  font-size: 40px;
+	}
+  }
+
+  @media only screen and (max-width: 767px) {
+	h1 {
+	  font-size: 34px;
+	  margin-top: 20px;
+	}
+	h5 {
+		font-size: 14px;	
+	}
+
+	p {
+		font-size: 12px;
+	}
+
+	p, h5, h1 {
+		text-align: center;
+	}
+	.startButton {
+		margin-left: 35%;
+		margin-bottom: 20px;
+	}
+
+	.homepageRow {
+		flex-wrap: wrap-reverse;
+	}
+
+	.heroImg {
+		max-height: 600px !important;
+		margin-top: 20px;
+	}
+  }
