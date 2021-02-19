@@ -74,7 +74,7 @@ class App extends Component {
 					</Route>
 					</div>
 				</BrowserRouter>
-				<footer className='column fixed-bottom'>
+				<footer className='column' style={{width: '100vw'}}>
 					<hr />
 					<div className='row justify-content-between'>
 						<p>©2021</p>

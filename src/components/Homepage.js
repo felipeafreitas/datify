@@ -10,9 +10,8 @@ export default class Homepage extends Component {
 					className='container d-flex justify-content-center align-items-center'
 					style={{ minHeight: '100vh' }}
 				>
-					<div className='row align-items-center justify-content-center'>
+					<div className='homepageRow row align-items-center justify-content-center'>
 						<div className='col-md-6 col-xs-12 justify-content-center align-items-center '>
-							{/* <h1>Music connecting people</h1> */}
 							<h1>What kind of music are you into?</h1>
 							<br />
 							<h5>Best conversation starter to lead for a first date</h5>
@@ -26,14 +25,14 @@ export default class Homepage extends Component {
 							<br />
 							<Link
 								to='/match-1/'
-								className='btn btn-success btn-lg'
+								className='startButton btn btn-success btn-lg'
 								type='button'
 							>
 								<strong>Find Out</strong>
 							</Link>
 						</div>
 						<div className='col-md-6 col-xs-12 justify-content-center align-items-center'>
-							<img className="img-fluid" src={heroImg2} alt='hero-img' />
+							<img className="heroImg img-fluid" src={heroImg2} alt='hero-img' />
 						</div>
 					</div>
 				</section>
