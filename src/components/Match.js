@@ -20,7 +20,7 @@ export default class Match extends Component {
         style={{ minHeight: "100vh" }}
       >
         {this.props.isFirstForm && (
-          <div className="slide-in-from-right">
+          <div className="fade-in">
             <div className="cardMatch d-flex flex-column align-items-center shadow-lg">
               <SongInput
                 token={this.props.token}
@@ -99,7 +99,7 @@ export default class Match extends Component {
         )}
 
         {this.props.isSecondForm && (
-          <div className="slide-in-from-left">
+          <div className="fade-in">
             <div className="cardMatch d-flex flex-column align-items-center shadow-lg">
               <SongInput
                 token={this.props.token}
